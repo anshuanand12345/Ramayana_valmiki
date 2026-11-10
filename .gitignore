@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+.DS_Store
+
+# Source PDF and extracted text — the translation is copyrighted; keep it out of the repo.
+backend/data/

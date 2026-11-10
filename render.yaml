@@ -1,0 +1,29 @@
+# Render blueprint — free web service for the API.
+services:
+  - type: web
+    name: ramayana-guide-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci && npm run models:download
+    startCommand: npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22
+      - key: MONGODB_URI
+        sync: false # MongoDB Atlas connection string
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_BASE_URL
+        value: https://api.openai.com/v1
+      - key: LLM_MODEL
+        value: gpt-4.1
+      - key: LLM_FAST_MODEL
+        value: gpt-4.1-mini
+      - key: COHERE_API_KEY
+        sync: false # optional
+      - key: CORS_ORIGIN
+        sync: false # your Vercel URL, e.g. https://ramayana-guide.vercel.app
